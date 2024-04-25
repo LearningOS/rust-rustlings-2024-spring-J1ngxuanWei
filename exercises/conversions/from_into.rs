@@ -40,10 +40,50 @@ impl Default for Person {
 // If while parsing the age, something goes wrong, then return the default of
 // Person Otherwise, then return an instantiated Person object with the results
 
-// I AM NOT DONE
+
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        if s.is_empty() {
+            return Person {
+                name: String::from("John"),
+                age: 30,
+            };
+        }
+        // 拆分字符串为字母部分和数字部分
+        let parts: Vec<&str> = s.split(',').collect();
+        if parts.len() != 2 {
+            return Person {
+                name: String::from("John"),
+                age: 30,
+            };
+        }
+        for ppp in &parts {
+            if ppp.is_empty() {
+                return Person {
+                    name: String::from("John"),
+                    age: 30,
+                };
+            }
+        }
+        if let Err(_) = parts[1].parse::<i32>() {
+            return Person {
+                name: String::from("John"),
+                age: 30,
+            };
+        }
+        if let Ok(age) = parts[1].parse::<usize>() {
+            Person {
+                name: parts[0].to_string(),
+                age: age,
+            }
+        } else {
+            // 处理解析失败的情况，这里假设默认年龄为0
+            Person {
+                name: String::from("John"),
+                age: 30,
+            }
+        }
     }
 }
 

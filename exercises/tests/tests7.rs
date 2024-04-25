@@ -8,7 +8,7 @@
 // with them with custom build scripts called `build.rs`. This file is
 // usually placed in the root of the project, while in this case the same
 // directory of this exercise.
-//
+// 
 // It can be used to:
 //
 // - Building a bundled C library.
@@ -34,7 +34,7 @@
 // Execute `rustlings hint tests7` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 fn main() {}
 
